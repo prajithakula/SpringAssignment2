@@ -1,0 +1,51 @@
+
+
+
+<div class="container" style="padding-top: 20px; margin-left: 20px;">
+  <div class="row">
+    <div class="col-md-6">
+      <form #inputData="ngForm"  (ngSubmit) = "onClickSubmit(inputData.value)">
+        <div class="form-group row" >
+            <label class="control-label col-md-4" for="sel1">Product Name:</label>
+            <div class="col-md-8">
+                <select name="prod"  class="form-control" ngModel>
+                    <option *ngFor="let prod of product" [value]="prod.id">{{prod.productName}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-4"></div>
+            <div class="col-md-8">
+                <button class="btn btn-success btn-lg btn-block" type="submit" > Process.. </button>
+            </div>
+        </div>
+    </form>
+    </div>
+  </div>
+  <div  class="row">
+    <div class="col-md-6">
+    <table class="table table-striped table-bordered" style="text-align: center;">
+      <thead>
+        
+        <tr>
+          <th>Product Name</th>
+          <th>Purchase Count</th>
+          <th>Cartons</th>
+          <th>Units</th>
+          <th>Total Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let prod of productDetails">
+          <td>{{prod.name}}</td>
+          <td>{{prod.totalCount}}</td>
+          <td>{{prod.cartons == 0 ? '-':prod.cartons}}</td>
+          <td>{{prod.units == 0 ? '-':prod.units}}</td>
+          <td>{{prod.price| currency:'LKR '}}</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div> 
+
